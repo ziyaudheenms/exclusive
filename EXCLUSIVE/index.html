@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Exclusive</title>
     <link rel="stylesheet" href="style/style.css" />
+    <link rel="icon" sizes="16x16" href="./assets/Logo.png" />
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
@@ -34,11 +36,16 @@
     <div class="wrapper">
       <nav class="navbar">
         <input type="checkbox" id="check" />
-        <label for="check" class="checkbtn">
+        <label for="check" class="checkbtn" id="click">
           <i class="fa-solid fa-bars" id="bars"></i>
+          <i class="fa-solid fa-xmark" id="xmark" style="display: none"></i>
         </label>
 
-        <h1 class="logo">Exclusive</h1>
+        <h1 class="logo">
+          <a href="./index.html" style="text-decoration: none; color: #000000"
+            >Exclusive</a
+          >
+        </h1>
 
         <ul class="navbarul">
           <li><a href="#">Home</a></li>
@@ -78,7 +85,7 @@
         <div class="spotlight_background">
           <div class="spotlight_left">
             <div class="iphone">
-              <img src="assets/apple.svg" alt="apple_logo" />
+              <img src="assets/apple.svg" alt="apple_logo" s />
               <h5>iPhone 14 Series</h5>
             </div>
             <h2>Up to 10% <br />off Voucher</h2>
@@ -100,7 +107,7 @@
     <div id="categories">
       <section class="wrapper">
         <div class="categories">
-          <h5 class="categories_text">categories</h5>
+          <h5 class="categories_text">Categories</h5>
         </div>
         <h3 class="Category_heading">Browse By Category</h3>
         <div class="category_items_flex" id="categoryItems"></div>
@@ -245,6 +252,22 @@
     </div>
 
     <script>
+      const checkbox = document.getElementById("check");
+      const barsIcon = document.getElementById("bars");
+      const xmarkIcon = document.getElementById("xmark");
+      // Add an event listener to the checkbox to toggle the icons
+      checkbox.addEventListener("change", function () {
+        if (checkbox.checked) {
+          // When checkbox is checked, show the 'xmark' icon and hide the 'bars' icon
+          barsIcon.style.display = "none";
+          xmarkIcon.style.display = "inline-block";
+        } else {
+          // When checkbox is unchecked, show the 'bars' icon and hide the 'xmark' icon
+          barsIcon.style.display = "inline-block";
+          xmarkIcon.style.display = "none";
+        }
+      });
+
       const data = [
         { name: "Phones", img: "assets/CellPhone.svg" },
         { name: "Computers", img: "assets/Computer.svg" },

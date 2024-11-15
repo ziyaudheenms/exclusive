@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Exclusive</title>
     <link rel="stylesheet" href="./style/style.css" />
+    <link rel="icon" sizes="16x16" href="./assets/Logo.png" />
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
@@ -34,11 +36,16 @@
     <div class="wrapper">
       <nav class="navbar">
         <input type="checkbox" id="check" />
-        <label for="check" class="checkbtn">
+        <label for="check" class="checkbtn" id="click">
           <i class="fa-solid fa-bars" id="bars"></i>
+          <i class="fa-solid fa-xmark" id="xmark" style="display: none"></i>
         </label>
 
-        <h1 class="logo">Exclusive</h1>
+        <h1 class="logo">
+          <a href="./index.html" style="text-decoration: none; color: #000000"
+            >Exclusive</a
+          >
+        </h1>
 
         <ul class="navbarul">
           <li><a href="#">Home</a></li>
@@ -103,9 +110,7 @@
 
     <div id="product_1">
       <section class="wrapper">
-        <div class="ListProducts" id="productList">
-
-        </div>
+        <div class="ListProducts" id="productList"></div>
       </section>
     </div>
 
@@ -195,6 +200,26 @@
     </div>
 
     <script>
+
+      const checkbox = document.getElementById("check");
+      const barsIcon = document.getElementById("bars");
+      const xmarkIcon = document.getElementById("xmark");
+      // Add an event listener to the checkbox to toggle the icons
+      checkbox.addEventListener("change", function () {
+        if (checkbox.checked) {
+          // When checkbox is checked, show the 'xmark' icon and hide the 'bars' icon
+          barsIcon.style.display = "none";
+          xmarkIcon.style.display = "inline-block";
+        } else {
+          // When checkbox is unchecked, show the 'bars' icon and hide the 'xmark' icon
+          barsIcon.style.display = "inline-block";
+          xmarkIcon.style.display = "none";
+        }
+        
+      });
+
+
+
       const main_items = [
         {
           name: "Breed Dry Dog Food",
@@ -477,10 +502,8 @@
           }
           
           <img src="${item.rating}" alt="star" style=${
-            item.dic_text ? "display:block":""
-          }/> <h4 class="bracket">(${
-            item.reviews
-          })</h4> </div> 
+            item.dic_text ? "display:block" : ""
+          }/> <h4 class="bracket">(${item.reviews})</h4> </div> 
             ${
               item.circle
                 ? ` <div class="circles"> <div class="circle_1"> <div class="circle_2 ${item.color}"></div> </div> <div class="circle_3"></div> </div>`
